@@ -142,21 +142,23 @@ print(triangle.perimeter(5,10,5))#20
 
 **Запуск всех тестов:**
 
+```
 python -m unittest discover -p "test_*.py" -v
-
+```
 
 **Запуск тестов конкретного модуля:**
 
+```
 python -m unittest test_circle -v
 python -m unittest test_square -v
 python -m unittest test_rectangle -v
 python -m unittest test_triangle -v
-
+```
 ## 📝 История изменений
 
 ### Версия 1.4 (2025-12-02)
 -  Добавлены unit-тесты для всех модулей
--  51 тест с полным покрытием кода (100%)
+-  47 тест с полным покрытием кода (100%)
 -  Обновлена документация с информацией о тестировании
 -  Каждый модуль имеет соответствующий файл `test_*.py`
 
