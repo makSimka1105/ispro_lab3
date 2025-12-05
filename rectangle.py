@@ -10,6 +10,8 @@ def area(a, b):
         float: площадь прямоугольника
 
     '''
+    if a < 0 or b < 0:
+        raise ValueError("Стороны не могут быть отрицательными")
     return a * b
 
 def perimeter(a, b):
@@ -24,4 +26,7 @@ def perimeter(a, b):
         float: периметр прямоугольника
 
     '''
+
+    if a < 0 or b < 0:
+        raise ValueError("Стороны не могут быть отрицательными")
     return 2 * (a + b)

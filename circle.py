@@ -10,6 +10,8 @@ def area(r):
     Возвращаемое значение:
         float: площадь круга
     '''
+    if r < 0 :
+        raise ValueError("Стороны не могут быть отрицательными")
     return math.pi * r * r
 
 def perimeter(r):
@@ -23,4 +25,6 @@ def perimeter(r):
         float: длина окружности
     
     '''
+    if r < 0 :
+        raise ValueError("Стороны не могут быть отрицательными")
     return 2 * math.pi * r

@@ -3,64 +3,50 @@ from triangle import area, perimeter
 
 
 class TriangleTestCase(unittest.TestCase):
-    
-    def test_area_positive_values(self):
-        result = area(10, 5)
-        self.assertEqual(result, 25)
-    
-    def test_area_unit_values(self):
-        result = area(1, 1)
-        self.assertEqual(result, 0.5)
-    
-    def test_area_zero_base(self):
-        result = area(0, 5)
-        self.assertEqual(result, 0)
-    
-    def test_area_zero_height(self):
-        result = area(10, 0)
-        self.assertEqual(result, 0)
-    
-    def test_area_zero_both(self):
-        result = area(0, 0)
-        self.assertEqual(result, 0)
-    
-    def test_area_fractional_values(self):
-        result = area(4.0, 2.5)
-        self.assertEqual(result, 5.0)
-    
-    def test_area_large_values(self):
-        result = area(100, 50)
-        self.assertEqual(result, 2500)
-    
-    def test_area_small_fractional(self):
-        result = area(0.5, 0.5)
-        self.assertEqual(result, 0.125)
-    
-    def test_perimeter_positive_sides(self):
-        result = perimeter(3, 4, 5)
-        self.assertEqual(result, 12)
-    
-    def test_perimeter_unit_sides(self):
-        result = perimeter(1, 1, 1)
-        self.assertEqual(result, 3)
-    
-    def test_perimeter_zero_sides(self):
-        result = perimeter(0, 0, 0)
-        self.assertEqual(result, 0)
-    
-    def test_perimeter_one_zero_side(self):
-        result = perimeter(0, 5, 5)
-        self.assertEqual(result, 10)
-    
-    def test_perimeter_fractional_sides(self):
-        result = perimeter(2.5, 3.5, 4.0)
-        self.assertAlmostEqual(result, 10.0, places=5)
-    
-    def test_perimeter_mixed_sides(self):
-        result = perimeter(5, 12, 13)
-        self.assertEqual(result, 30)
-    
-    def test_perimeter_large_sides(self):
-        result = perimeter(100, 100, 100)
-        self.assertEqual(result, 300)
 
+    def test_area_normal(self):
+        self.assertEqual(area(6, 4), 12)
+
+    def test_area_negative_base(self):
+        with self.assertRaises(ValueError):
+            area(-5, 4)
+
+    def test_area_negative_height(self):
+        with self.assertRaises(ValueError):
+            area(5, -4)
+
+    def test_area_zero_base(self):
+        self.assertEqual(area(0, 5), 0)
+
+    def test_area_zero_height(self):
+        self.assertEqual(area(5, 0), 0)
+
+    def test_area_float1(self):
+        self.assertAlmostEqual(area(3.5, 2.0), 3.5, places=5)
+
+    def test_area_float2(self):
+        self.assertAlmostEqual(area(2.4, 1.5), 1.8, places=5)
+
+
+    def test_perimeter_normal(self):
+        self.assertEqual(perimeter(3, 4, 5), 12)
+
+    def test_perimeter_negative_a(self):
+        with self.assertRaises(ValueError):
+            perimeter(-3, 4, 5)
+
+    def test_perimeter_negative_b(self):
+        with self.assertRaises(ValueError):
+            perimeter(3, -4, 5)
+
+    def test_perimeter_one_zero(self):
+        self.assertEqual(perimeter(0, 4, 5), 9)
+
+    def test_perimeter_all_zero(self):
+        self.assertEqual(perimeter(0, 0, 0), 0)
+
+    def test_perimeter_float1(self):
+        self.assertAlmostEqual(perimeter(2.5, 3.5, 4.0), 10.0, places=5)
+
+    def test_perimeter_float2(self):
+        self.assertAlmostEqual(perimeter(1.1, 2.2, 3.3), 6.6, places=5)

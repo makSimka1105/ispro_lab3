@@ -9,6 +9,8 @@ def area(a):
         float: площадь квадрата
 
     '''
+    if a < 0 :
+        raise ValueError("Стороны не могут быть отрицательными")
     return a * a
 
 def perimeter(a):
@@ -21,4 +23,7 @@ def perimeter(a):
     Возвращаемое значение:
         float: периметр квадрата
     '''
+
+    if a < 0 :
+        raise ValueError("Стороны не могут быть отрицательными")
     return 4 * a
